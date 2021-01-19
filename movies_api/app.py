@@ -13,7 +13,7 @@ def index():
 
 @app.route('/about')
 def about():
-    return '<h1>About</h1><p>Some other content</p>'
+    return '<h1>About</h1><p>I shall remain a secret...</p>'
 
 @app.route('/display_movies')
 def display_movies():

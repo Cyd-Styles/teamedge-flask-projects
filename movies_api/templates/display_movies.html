@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movies</title>
 </head>
 <body>
      <h2>{{greeting}}</h2>
     <h2>Movies:</h2>
-    {% for movie in movies %}
-    <p>{{movie}}</p>
+    {% for title in titles %}
+    <p>{{movies_data['title']}}</p>
     {% endfor %}
+
+    <style>
+        body {
+            background-color: rgb(255, 181, 255);
+        }
+    </style>
 </body>
 </html>

@@ -8,8 +8,8 @@
 <body>
      <h2>{{greeting}}</h2>
     <h2>Movies:</h2>
-    {% for movie_data in movies_data %}
-    <p>{{movies_data['movie_data']}}</p>
+    {% for movie_title in movie_titles %}
+    <p>{{movie_title ['title']}}</p>
     {% endfor %}
 
     <style>

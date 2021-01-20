@@ -4,6 +4,7 @@ import os
 app = Flask(__name__, static_folder="static")
 
 movies_data = os.path.join(app.static_folder, 'data', 'movies.json')
+movie_titles = os.path.join(app.static_folder, 'data', 'movies.json', 'title')
 events_data = os.path.join(app.static_folder, 'data', 'events.json')
 
 
@@ -17,9 +18,9 @@ def about():
 
 @app.route('/display_movies')
 def display_movies():
-    
+
     greeting="Check Out These Cool Movies!!!"
-    return render_template('display_movies.html', greeting=greeting, movies_data=movies_data)
+    return render_template('display_movies.html', greeting=greeting, movie_titles=movie_titles)
 
 @app.route('/api/v1/movies', methods=['GET'])
 def api_movies_all():

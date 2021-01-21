@@ -20,6 +20,9 @@ def about():
 def display_movies():
 
     greeting="Check Out These Cool Movies!!!"
+    results = []
+    with open(movies_data, 'r') as jsondata:
+        movie_titles = json.load(jsondata)
     return render_template('display_movies.html', greeting=greeting, movie_titles=movie_titles)
 
 @app.route('/api/v1/movies', methods=['GET'])

@@ -5,6 +5,7 @@ app = Flask(__name__, static_folder="static")
 
 movies_data = os.path.join(app.static_folder, 'data', 'movies.json')
 movie_titles = os.path.join(app.static_folder, 'data', 'movies.json', 'title')
+#movies_years = os.path.join(app.static_folder, 'data', 'movies.json', 'year')
 events_data = os.path.join(app.static_folder, 'data', 'events.json')
 
 

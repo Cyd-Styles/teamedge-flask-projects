@@ -4,8 +4,8 @@ app = Flask(__name__)
 
 @app.route('/rainbow')
 def rainbow_links():
-    link = 'http://0.0.0.5000'
-    color_link = ['/red', '/orange', '/yellow', '/green', '/blue', '/indigo', '/violet']
+    link = 'http://0.0.0.0:5000/'
+    color_link = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
     return render_template('rainbow.html', link = link, color_link = color_link)
 @app.route('/red')
 def red():

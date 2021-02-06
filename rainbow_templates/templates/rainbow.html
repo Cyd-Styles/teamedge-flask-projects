@@ -7,13 +7,11 @@
 </head>
 <body>
     <ul>
-        {% for color_link in color_links %} 
             {% for color_link in color_links %} {
-                <li>'{{color}}:'<a href = '{{link}}{{color_link}}'></a></li>
+                <li><a href = '{{link}}{{color_link}}'>{{color}}</a></li>
             }
         
             {% endfor %}
-        {% endfor %}
     </ul>
     
     

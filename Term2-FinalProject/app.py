@@ -15,16 +15,16 @@ def success(name):
 def login():
    if request.method == 'POST':
       user = request.form['nm']
-      return redirect(url_for('success',name = user))
+      return render_template('main.html',name = user)
    else:
       user = request.args.get('nm')
-      return redirect(url_for('success',name = user))
+      return redirect(url_for('main.html',name = user)
 
-@app.route('/message', methods = ['POST', 'GET'])
-def message_page(message):
+@app.route('/message',methods = ['POST', 'GET'])
+def message():
     if request.method == 'POST':
-        messae = request.form['message']
-        return redirect(url_for("message", message = message)
+        message = request.form['msg']
+        return render_template("message_page.html", name = message)
 
 
 

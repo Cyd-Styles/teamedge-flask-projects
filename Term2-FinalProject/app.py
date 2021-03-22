@@ -20,6 +20,13 @@ def login():
       user = request.args.get('nm')
       return redirect(url_for('success',name = user))
 
+@app.route('/message', methods = ['POST', 'GET'])
+def message_page(message):
+    if request.method == 'POST':
+        messae = request.form['message']
+        return redirect(url_for("message", message = message)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

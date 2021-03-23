@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, current_app as app
 from sense_emu import SenseHat
+from time import sleep
+
+sense = SenseHat
+
 app = Flask(__name__)
 
- 
 @app.route('/')
 def index():
     return render_template('main.html')
@@ -19,10 +22,11 @@ def name():
 @app.route('/message',methods = ['POST', 'GET'])
 def message():
     if request.method == 'POST':
-        message = request.args.get('msg')
-        return render_template("message_page.html", name = message)
+        message = request.form['msg']
+        return render_template("message_page.html", message = message)
 
 
+sense.show_message(message)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

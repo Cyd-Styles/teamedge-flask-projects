@@ -17,16 +17,17 @@ def name():
       return render_template('name.html', name = user)
    else:
       user = request.args.get('nm')
+      sense.show_message(name)
       return render_template('name.html', name = user)
 
 @app.route('/message',methods = ['POST', 'GET'])
 def message():
     if request.method == 'POST':
         message = request.form['msg']
-        return render_template("message_page.html", message = message)
+        print(message)
+    sense.show_message(message)
+    return render_template("message_page.html", message = message)
 
-
-sense.show_message(message)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

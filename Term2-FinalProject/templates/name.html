@@ -4,8 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        #usr-name {
+            font-size: 200px;
+            color: white;
+            display: flex;
+            justify-content: center;
+        }
+        a {
+            color: yellow;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            
+        }
+        a:hover {
+            color: rgb(255, 0, 157)
+        }
+        #greeting {
+            color: violet;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        
+    </style>
 </head>
 <body>
-    {{name}}
+    <div id = greeting>
+        <h1>Check out your name!</h1>
+    </div>
+    <div id = "usr-name">
+        {{name}}
+    </div>
+    <br>
+    <br>
+    <a href= "/"> Return to the Home Page </a>
 </body>
 </html>

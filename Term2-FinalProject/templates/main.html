@@ -4,19 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-</head>
-<body>
-    <form action = "http://localhost:5000/name" method = "post">
-        <p>Enter Name:</p>
-        <p><input type = "text" name = "nm" /></p>
-        <p><input type = "submit" value = "Send Your Name" /></p>
-    </form>
+    <style>
+        body {
+            text-align: center;
+            position: absolute;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        form {
+            margin: 50px;
+        }
+        
+        
+    </style>
+    <script type = "text/javascript">
+        function random_background_color() 
+        {
+            window.setTimeout("random_background_color()", 500); // 0.5 second
+            var color = (Math.round(Math.random()*5));
+        
+            var ColorValue = "FFFFFF"; // white
+            if(color == 1)
+            ColorValue = "FCFFB3"; // pale yellow
+            if(color == 2)
+            ColorValue = "E0B0FF"; // pale violet
+            if(color == 3)
+            ColorValue = "FADADD"; // pale pink
+            if(color == 4)
+            ColorValue = "B6E7FF"; // pale blue
+            if(color == 5)
+            ColorValue = "D5FDD5"; // pale green
+        
+            document.getElementsByTagName("body")[0].style.backgroundColor = "#" + ColorValue;
+        }
+    </script>
+        <body onload = "random_background_color();"></body>
 
-    <form action = "http://localhost:5000/message" method = "post">   
-        <p>Write a Message:</p>
-        <p><input type = "text" name = "msg" /></p>
-        <p><input type = "submit" value = "Send A Message" /></p>
-    </form>      
+</head>
+
+<body>
+    <div id = name>
+        <form action = "http://localhost:5000/name" method = "post">
+            <p>Enter Name:</p>
+            <p><input type = "text" name = "nm" /></p>
+            <p><input type = "submit" value = "Send Your Name" /></p>
+        </form>
+    </div>
+
+    <div id = message-form>
+            <form action = "http://localhost:5000/message" method = "post">   
+            <p>Write a Message:</p>
+            <p><input type = "text" name = "msg" /></p>
+            <p><input type = "submit" value = "Send A Message" /></p>
+        </form> 
+    </div>
+    
     
 </body>
 </html>

@@ -4,8 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Message</title>
+    <style>
+        /* #message-form {
+            background-color: black;
+            font-size: 300px;
+            color: white;
+            display: flex;
+            justify-content: center;
+        } */
+        a {
+            font-size: 50px;
+            color: yellow;
+            display: flex;
+            justify-content: center;
+        }
+        a:hover {
+            color: rgb(255, 0, 157)
+
+        }
+        body {
+            background-color: black;
+        }
+        #greeting {
+            color: violet;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        #usr-msg {
+            font-size: 100px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    {{message}}
+    <div id = "content">
+        <div id = "greeting">
+            <h1>Look at the message you sent to the Raspberry Pi! </h1>
+        </div>
+        <br>
+        <br>
+        <div id = "usr-msg">
+            <h2>{{message}}</h2>
+        </div>
+        <br>
+        <br>
+    </div>
+    <a href="/"> Return to the Home Page </a>
+    <br>
+    <br>
 </body>
 </html>

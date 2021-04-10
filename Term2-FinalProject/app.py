@@ -4,6 +4,12 @@ from time import sleep
 
 sense = SenseHat()
 
+y = (255, 255, 0) # YELLOW color
+o = (255, 128, 0) # ORANGE color
+w = (255, 255, 255) # WHITE color
+r = (255, 0, 0 ) # RED color
+c = (139, 69, 19) # BROWN / CAFE color
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -29,7 +35,32 @@ def message():
         sense.show_message(message)
     return render_template("message_page.html", message = message)
 
+# @app.route('/drawing', methods = ['POST', 'GET'])
+# def drawing():
+#     if request.method == 'POST':
+#         drawing = request.form['draw']
+#         sense.set_pixels(heart)
+#     return render_template*("drawing.html", drawing = heart)
 
+heart = [
+w, r, r, w, w, r, r, w,
+r, o, o, r, r, o, o, r,
+r, o, y, o, o, y, o, r,
+r, o, y, y, y, y, o, r,
+w, r, o, y, y, o, r, w,
+w, r, o, y, y, o, r, w,
+w, w, r, o, o, r, w, w,
+w, w, w, r, r, w, w, w
+]
+
+# mario = [
+#     w, w, r, r, r, r, w, w,
+#     w, r, r, r, r, r, r, w,
+#     w, c, c, y, y, k, w, w, 
+#     c, y, c, 
+
+# ]
+sense.set_pixels(heart)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

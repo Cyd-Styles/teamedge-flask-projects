@@ -38,7 +38,7 @@
             ColorValue = "B6E7FF"; // pale blue
             if(color == 5)
             ColorValue = "D5FDD5"; // pale green
-        
+
             document.getElementsByTagName("body")[0].style.backgroundColor = "#" + ColorValue;
         }
     </script>
@@ -48,7 +48,7 @@
 
 <body>
     <div id = name>
-        <form action = "http://localhost:5000/name" method = "post">
+        <form action = "/name" method = "post">
             <p>Enter Name:</p>
             <p><input type = "text" name = "nm" /></p>
             <p><input type = "submit" value = "Send Your Name" /></p>
@@ -56,12 +56,18 @@
     </div>
 
     <div id = message-form>
-            <form action = "http://localhost:5000/message" method = "post">   
+            <form action = "/message" method = "post">   
             <p>Write a Message:</p>
             <p><input type = "text" name = "msg" /></p>
             <p><input type = "submit" value = "Send A Message" /></p>
         </form> 
     </div>
+    <button>
+        Heart
+    </button>
+    <button>
+        
+    </button>
     
     
 </body>

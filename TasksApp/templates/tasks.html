@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action = "/submitted-tasks" method = "post">   
+        <h1>Enter A Task Below:</h1>
+        <p>Select the Assignment Subject:</p>
+            <input type = "radio" name = "task-type" value= "math" />
+            <label for = "math">Math</label><br>
+            <input type = "radio" name = "task-type" value= "english" />
+            <label for = "english">English</label><br>
+            <input type = "radio" name = "task-type" value= "writing" />
+            <label for = "writing">Writing</label><br>
+            <input type = "radio" name = "task-type" value= "science" />
+            <label for = "science">Science</label><br>
+            <input type = "radio" name = "task-type" value= "history" />
+            <label for = "history">History</label><br>
+            <input type = "radio" name = "task-type" value= "other" />
+            <label for = "other">Other</label><br>
+        <p>Enter The Task Name:</p> 
+            <input type = "text" name = "task-name" />
+        <p>Enter The Assignment Due Date:</p>
+            <input type = "datetime-locaL" name = "task-due-date" />
+        <p></p><input type = "submit" value = "Submit Task" /></p>
+    </form>
+</body>
+</html>

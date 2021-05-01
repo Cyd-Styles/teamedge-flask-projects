@@ -11,19 +11,8 @@ scheduler = APScheduler()
 scheduler.init_app(app)
 scheduler.start()
 
+
 @app.route('/')
-def index():
-    return render_template('main.html')
-    
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
-
-@app.route('/tasks')
 def entertasks():
     return render_template('tasks.html')
 

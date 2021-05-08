@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel= "stylesheet" href = "/static/css/tasks.css">
 </head>
 <body>
-    
+    <ul>
+        {% for task in tasks %}
+        
+            <p>{{task['subject']}}: Complete {{task['names']}} by {{task['deadlines']}}</p>
+            <!-- <span>{{task["tasks"]}}</span> -->
+            <a href = "{{ '/tasks/edit/%s '%task.id }}">Edit</a>
+            <a href = "{{ '/tasks/delete/%s '%task.id }}">Delete</a>
+            <a href = "{{ '/tasks/done/%s '%task.id }}">Done</a>
+        
+            {% endfor %} 
+    </ul>
 </body>
 </html>

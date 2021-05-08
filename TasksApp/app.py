@@ -12,12 +12,14 @@ scheduler.init_app(app)
 scheduler.start()
 
 
+# Home Page w/ Form
 @app.route('/')
 def add_tasks():
-    return render_template('tasks.html')
+    return render_template('form.html')
 
-@app.route('/submitted-tasks', methods=['POST', 'GET'])
-def stored_tasks():
+# Task Display Page
+@app.route('/tasks', methods=['POST', 'GET'])
+def view_tasks():
     if request.method == 'POST':
         #get posted form data using names assigned in HTML
         subject = request.form['task-type']
@@ -30,23 +32,60 @@ def stored_tasks():
         conn.commit()
         #close database connection
         conn.close()
-        #render template with success message
-        return render_template('store_tasks.html', subjects = subject, tasknames = name, deadlines = deadline)
+        #connect to DB
+        conn = sqlite3.connect('./static/data/tasks-app.db')
+        curs = conn.cursor()
+        tasks = []
+        rows = curs.execute("SELECT * FROM tasks ORDER BY deadlines DESC;")
+        for row in rows:
+            task = {'rowid': row[0], 'subject': row[1], 'names':row[2], 'deadlines':row[3]}
+            tasks.append(task)
+            print(task)
+        conn.close()
+        # render template with success message
+        return render_template('all_tasks.html', tasks = tasks)
 
-@app.route('/all-tasks')
-def all():
+        #return render_template('all_tasks.html', subjects = subject, tasknames = name, deadlines = deadline)
+
+# @app.route('/task/edit<id>', methods=(['GET', 'POST']))
+# def edit(id):
+
+
+
+@app.route('/tasks/delete/<id>')
+def delete(id):
+    conn = sqlite3.connect('./static/data/tasks-app.db')
+    curs = conn.cursor()
+    curs.execute("DELETE FROM tasks WHERE (rowid,) = VALUES((?)")
+    conn.commit()
+    #close database connection
+    conn.close()
     #connect to DB
     conn = sqlite3.connect('./static/data/tasks-app.db')
     curs = conn.cursor()
     tasks = []
-    rows = curs.execute("SELECT * from tasks")
+    rows = curs.execute("SELECT FROM tasks WHERE (rowid,) = VALUES((?)")
     for row in rows:
         task = {'rowid': row[0], 'subject': row[1], 'names':row[2], 'deadlines':row[3]}
         tasks.append(task)
         print(task)
     conn.close()
     return render_template('all_tasks.html', tasks = tasks)
-    
+
+
+# @app.route('/deleteTask/<btn>')
+# def delete(btn):
+#     print('button ' + str(btn) + ' was pressed')
+#     return render_template('all_tasks.html')
+
+
+
+
+
+        
+        
+
+
 
 
 

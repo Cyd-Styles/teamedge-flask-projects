@@ -13,7 +13,7 @@
             <p>{{task['subject']}}: Complete {{task['names']}} by {{task['deadlines']}}</p>
             <!-- <span>{{task["tasks"]}}</span> -->
             <a href = "{{ '/tasks/edit/%s '%task.id }}">Edit</a>
-            <a href = "{{ '/tasks/delete/%s '%task.id }}">Delete</a>
+            <a href = "/tasks/delete/{{tasks['id']}}">Delete</a>
             <a href = "{{ '/tasks/done/%s '%task.id }}">Done</a>
         
             {% endfor %} 

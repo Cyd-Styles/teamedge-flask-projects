@@ -56,7 +56,7 @@ def view_tasks():
 def delete(id):
     conn = sqlite3.connect('./static/data/tasks-app.db')
     curs = conn.cursor()
-    curs.execute("DELETE FROM tasks WHERE (rowid,) = VALUES((?)")
+    curs.execute("DELETE FROM tasks WHERE rowid = VALUES(?)", (id,))
     conn.commit()
     #close database connection
     conn.close()
@@ -64,7 +64,7 @@ def delete(id):
     conn = sqlite3.connect('./static/data/tasks-app.db')
     curs = conn.cursor()
     tasks = []
-    rows = curs.execute("SELECT FROM tasks WHERE (rowid,) = VALUES((?)")
+    rows = curs.execute("SELECT FROM tasks WHERE rowid = VALUES(?)", (id, ))
     for row in rows:
         task = {'rowid': row[0], 'subject': row[1], 'names':row[2], 'deadlines':row[3]}
         tasks.append(task)
@@ -76,7 +76,7 @@ def delete(id):
 def edit(id):
     conn = sqlite3.connect('./static/data/tasks-app.db')
     curs = conn.cursor()
-    curs.execute("UPDATE FROM tasks WHERE (rowid,) = VALUES((?)")
+    curs.execute("UPDATE FROM tasks SET subjects = subject, tasknames = names, deadlines = deadlines WHERE rowid = VALUES(?)", (id, ))
     conn.commit()
     #close database connection
     conn.close()
@@ -84,7 +84,7 @@ def edit(id):
     conn = sqlite3.connect('./static/data/tasks-app.db')
     curs = conn.cursor()
     tasks = []
-    rows = curs.execute("SELECT FROM tasks WHERE (rowid,) = VALUES((?)")
+    rows = curs.execute("SELECT FROM tasks WHERE rowid = VALUES(?)", (id, ))
     for row in rows:
         task = {'rowid': row[0], 'subject': row[1], 'names':row[2], 'deadlines':row[3]}
         tasks.append(task)

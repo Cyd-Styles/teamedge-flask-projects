@@ -72,6 +72,26 @@ def delete(id):
     conn.close()
     return render_template('all_tasks.html', tasks = tasks)
 
+@app.route('/tasks/edit/<id>', methods=['POST', 'GET'])
+def edit(id):
+    conn = sqlite3.connect('./static/data/tasks-app.db')
+    curs = conn.cursor()
+    curs.execute("UPDATE FROM tasks WHERE (rowid,) = VALUES((?)")
+    conn.commit()
+    #close database connection
+    conn.close()
+    #connect to DB
+    conn = sqlite3.connect('./static/data/tasks-app.db')
+    curs = conn.cursor()
+    tasks = []
+    rows = curs.execute("SELECT FROM tasks WHERE (rowid,) = VALUES((?)")
+    for row in rows:
+        task = {'rowid': row[0], 'subject': row[1], 'names':row[2], 'deadlines':row[3]}
+        tasks.append(task)
+        print(task)
+    conn.close()
+    return render_template('all_tasks.html', tasks = tasks)
+
 
 # @app.route('/deleteTask/<btn>')
 # def delete(btn):

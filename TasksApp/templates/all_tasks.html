@@ -12,9 +12,11 @@
         
             <p>{{task['subject']}}: Complete {{task['names']}} by {{task['deadlines']}}</p>
             <!-- <span>{{task["tasks"]}}</span> -->
+
             <a href = "/tasks/edit/{{task['rowid']}}">Edit</a>
             <a href = "/tasks/delete/{{task['rowid']}}">Delete</a>
             <a href = "/tasks/done/{{task['rowid']}}">Done</a>
+
         
             {% endfor %} 
     </ul>

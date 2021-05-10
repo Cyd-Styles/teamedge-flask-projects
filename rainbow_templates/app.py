@@ -2,6 +2,10 @@ from flask import Flask, render_template, current_app as app
 
 app = Flask(__name__)
 
+@app.route('/')
+def home_page():
+    return render_template('index.html')
+
 @app.route('/rainbow')
 def rainbow_links():
     link = 'http://0.0.0.0:5000/'

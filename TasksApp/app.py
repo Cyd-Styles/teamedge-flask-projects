@@ -45,11 +45,6 @@ def view_tasks():
         # render template with success message
         return render_template('all_tasks.html', tasks = tasks)
 
-        #return render_template('all_tasks.html', subjects = subject, tasknames = name, deadlines = deadline)
-
-# @app.route('/task/edit<id>', methods=(['GET', 'POST']))
-# def edit(id):
-
 
 
 @app.route('/tasks/delete/<id>')
@@ -64,7 +59,7 @@ def delete(id):
     conn = sqlite3.connect('./static/data/tasks-app.db')
     curs = conn.cursor()
     tasks = []
-    rows = curs.execute("SELECT FROM tasks WHERE rowid = VALUES(?)", (id, ))
+    rows = curs.execute("SELECT * FROM tasks WHERE rowid = (?)", (id, ))
     for row in rows:
         task = {'rowid': row[0], 'subject': row[1], 'names':row[2], 'deadlines':row[3]}
         tasks.append(task)
@@ -74,23 +69,23 @@ def delete(id):
 
 @app.route('/tasks/edit/<id>', methods=['POST', 'GET'])
 def edit(id):
-    conn = sqlite3.connect('./static/data/tasks-app.db')
-    curs = conn.cursor()
-    curs.execute("UPDATE FROM tasks SET subjects = subject, tasknames = names, deadlines = deadlines WHERE rowid = VALUES(?)", (id, ))
-    conn.commit()
+    # conn = sqlite3.connect('./static/data/tasks-app.db')
+    # curs = conn.cursor()
+    # #curs.execute("UPDATE FROM tasks SET subjects = subject, tasknames = names, deadlines = deadlines WHERE rowid = VALUES(?)", (id, ))
+    # conn.commit()
     #close database connection
-    conn.close()
+    #conn.close()
     #connect to DB
     conn = sqlite3.connect('./static/data/tasks-app.db')
     curs = conn.cursor()
     tasks = []
-    rows = curs.execute("SELECT FROM tasks WHERE rowid = VALUES(?)", (id, ))
+    rows = curs.execute("SELECT * FROM tasks WHERE rowid = (?)", (id, ))
     for row in rows:
         task = {'rowid': row[0], 'subject': row[1], 'names':row[2], 'deadlines':row[3]}
         tasks.append(task)
         print(task)
     conn.close()
-    return render_template('all_tasks.html', tasks = tasks)
+    return render_template('edit_tasks.html', tasks = tasks)
 
 
 # @app.route('/deleteTask/<btn>')

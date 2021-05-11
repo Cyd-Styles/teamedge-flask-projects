@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel= "stylesheet">
+</head>
+<body>
+    <img src = "static/images/Homework_Tracker_No_background.png" alt = "Homework Task Master">
+    <form action = "/tasks" method = "post">   
+        <h1>Enter A Task Below:</h1>
+        <p>Select the Assignment Subject:</p>
+        <!--label for "" can be lowercase, but it's for the database dictionary-->
+            <input type = "radio" name = "task-type" value= "Math" />
+            <label for = "Math">Math</label><br>
+            <input type = "radio" name = "task-type" value= "English" />
+            <label for = "English">English</label><br>
+            <input type = "radio" name = "task-type" value= "Writing" />
+            <label for = "Writing">Writing</label><br>
+            <input type = "radio" name = "task-type" value= "Science" />
+            <label for = "Science">Science</label><br>
+            <input type = "radio" name = "task-type" value= "History" />
+            <label for = "History">History</label><br>
+            <input type = "radio" name = "task-type" value= "Other" />
+            <label for = "Other">Other</label><br>
+        <p>Enter The Task Name:</p> 
+            <input type = "text" name = "task-name" />
+        <p>Enter The Assignment Due Date:</p>
+            <input type = "datetime-local" name = "task-due-date" />
+        <p></p><input type = "submit" value = "Submit Task" /></p>
+    </form>
+</body>
+</html>

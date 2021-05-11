@@ -69,17 +69,23 @@ def delete(id):
 
 @app.route('/tasks/edit/<id>', methods=['POST', 'GET'])
 def edit(id):
-    # conn = sqlite3.connect('./static/data/tasks-app.db')
-    # curs = conn.cursor()
-    # #curs.execute("UPDATE FROM tasks SET subjects = subject, tasknames = names, deadlines = deadlines WHERE rowid = VALUES(?)", (id, ))
-    # conn.commit()
-    #close database connection
-    #conn.close()
-    #connect to DB
-    conn = sqlite3.connect('./static/data/tasks-app.db')
-    curs = conn.cursor()
-    tasks = []
-    rows = curs.execute("SELECT * FROM tasks WHERE rowid = (?)", (id, ))
+    if request.method == 'POST':
+        #get posted form data using names assigned in HTML
+        subject = request.form['task-type']
+        name = request.form['task-name']
+        deadline = request.form['task-due-date']
+        #connect to database and insert subject, name, and deadline
+        conn = sqlite3.connect('./static/data/tasks-app.db')
+        curs = conn.cursor()
+        curs.execute("UPDATE tasks SET subjects = (?), tasknames = (?), deadlines = (?), WHERE rowid = (?)",(subject, name, deadline, id))
+        conn.commit()
+        #close database connection
+        conn.close()
+        #connect to DB
+        conn = sqlite3.connect('./static/data/tasks-app.db')
+        curs = conn.cursor()
+        tasks = []
+        rows = curs.execute("SELECT * FROM tasks WHERE rowid = (?)", (id, ))
     for row in rows:
         task = {'rowid': row[0], 'subject': row[1], 'names':row[2], 'deadlines':row[3]}
         tasks.append(task)
